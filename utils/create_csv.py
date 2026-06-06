@@ -11,19 +11,24 @@ if __name__ == "__main__":
 
     filename = "user_data.csv"
 
-    with open(f"data/{filename}", "w", newline="") as file:
-        writer = csv.writer(file)
+    try:
 
-        writer.writerow(["ID", "Name", "Email"])
-        for user in User.all_users:
-            writer.writerow([user.id, user.name, user.email])
+        with open(f"data/{filename}", "w", newline="") as file:
+            writer = csv.writer(file)
 
-        writer.writerow(["ID", "Title", "Description", "Due_date"])
-        for project in Project.all_projects:
-            writer.writerow([cli.id, cli.title, cli.description, cli.due_date])
+            writer.writerow(["ID", "Name", "Email"])
+            for user in User.all_users:
+                writer.writerow([user.id, user.name, user.email])
 
-        writer.writerow(["ID", "Title", "Status", "Assigned_to"])
-        for task in Task.all_tasks:
-            writer.writerow([task.id, task.title, task.status, task.assigned_to])
+            writer.writerow(["ID", "Title", "Description", "Due_date"])
+            for project in Project.all_projects:
+                writer.writerow([project.id, project.title, project.description, project.due_date])
 
-    print(f"✅ {filename} Saved")
+            writer.writerow(["ID", "Title", "Status", "Assigned_to"])
+            for task in Task.all_tasks:
+                writer.writerow([task.id, task.title, task.status, task.assigned_to])
+
+        print(f"✅ {filename} Saved")
+
+    except FileNotFoundError:
+        print("❌ file not found")
