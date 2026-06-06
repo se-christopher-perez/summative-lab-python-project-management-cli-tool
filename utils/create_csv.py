@@ -61,16 +61,36 @@ if __name__ == "__main__":
         except FileNotFoundError:
             print("[red]❌ file not found[/red]")
 
-    # def load_data():
-    #     try:
+    def load_data():
+        try:
+            
+            with open(f"data/user_data.csv", "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    print(row)
 
-    #         with open("data/user_data.csv", "r") as file:
-    #             reader = csv.reader(file)
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
 
-    #             for row in reader:
-    #                 id, name, email
+        try:
+            
+            with open(f"data/project_data.csv", "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    print(row)
 
-    #     except FileNotFoundError:
-    #         print("[red]❌ file not found[/red]")
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
+
+        try:
+            
+            with open(f"data/task_data.csv", "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    print(row)
+
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
 
     save_data()
+    load_data()
