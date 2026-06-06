@@ -1,14 +1,11 @@
-class User:
+class Person:
 
-    all_users = []
-    unique_id = 0
+    all_persons = []
 
     def __init__(self, name, email):
-        User.unique_id += 1
-        self.id = User.unique_id
         self.name = name
         self.email = email
-        User.all_users.append(self)
+        Person.all_persons.append(self)
 
     @property
     def name(self):
@@ -30,6 +27,20 @@ class User:
             raise TypeError("Email must be a string")
         self._email = value
 
+    def __str__(self):
+        return f"Name: {self.name}\nEmail: {self.email}"
+
+class User(Person):
+
+    all_users = []
+    unique_id = 0
+
+    def __init__(self, name, email):
+        super().__init__(name, email)
+        User.unique_id += 1
+        self.id = User.unique_id
+        User.all_users.append(self)
+
     @classmethod
     def create_new_user(cls, name, email):
         return cls(name, email)
@@ -39,7 +50,7 @@ class User:
         return cls.all_users
     
     def __str__(self):
-        return f"Name: {self.name}\nEmail: {self.email}"
+        return f"ID: {self.id}\nName: {self.name}\nEmail: {self.email}"
 
 class Project:
 

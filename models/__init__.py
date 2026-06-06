@@ -1,1 +1,1 @@
-from models.models import User, Project, Task
+from models.models import Person, User, Project, Task

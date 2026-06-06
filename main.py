@@ -1,4 +1,7 @@
-from models import User, Project, Task
+from models import Person, User, Project, Task
+
+gal = Person("Gal", "gal@email.com")
+print(gal)
 
 dude = User.create_new_user("Dude", "dude@email.com")
 print(dude)
