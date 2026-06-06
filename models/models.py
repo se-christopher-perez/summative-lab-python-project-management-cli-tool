@@ -40,6 +40,12 @@ class User(Person):
         User.unique_id += 1
         self.id = User.unique_id
         User.all_users.append(self)
+        self.projects = []
+
+    def add_project(self, value):
+        if not isinstance(value, Project):
+            raise TypeError("project must be an instance of project")
+        self.projects.append(value)
 
     @classmethod
     def create_new_user(cls, name, email):
@@ -64,6 +70,12 @@ class Project:
         self.description = description
         self.due_date = due_date
         Project.all_projects.append(self)
+        self.tasks = []
+
+    def add_tasks(self, value):
+        if not isinstance(value, Task):
+            raise TypeError("task must be an instance of Task")
+        self.tasks.append(value)
 
     @property
     def title(self):
