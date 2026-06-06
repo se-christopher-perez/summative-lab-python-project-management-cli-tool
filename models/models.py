@@ -7,6 +7,26 @@ class User:
         self.email = email
         User.all_users.append(self)
 
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, value):
+        if type(value) is not str:
+            raise TypeError("Name must be a string")
+        self._name = value
+
+    @property
+    def email(self):
+        return self._email
+    
+    @email.setter
+    def email(self, value):
+        if type(value) is not str:
+            raise TypeError("Email must be a string")
+        self._email = value
+
     @classmethod
     def create_new_user(cls, name, email):
         return cls(name, email)
@@ -16,7 +36,7 @@ class User:
         return cls.all_users
     
     def __str__(self):
-        return f"User: {self.name}\nEmail: {self.email}"
+        return f"Name: {self.name}\nEmail: {self.email}"
 
 class Project:
 
@@ -27,6 +47,36 @@ class Project:
         self.description = description
         self.due_date = due_date
         Project.all_projects.append(self)
+
+    @property
+    def title(self):
+        return self._title
+    
+    @title.setter
+    def title(self, value):
+        if type(value) is not str:
+            raise TypeError("Title must be a string")
+        self._title = value
+
+    @property
+    def description(self):
+        return self._description
+    
+    @description.setter
+    def description(self, value):
+        if type(value) is not str:
+            raise TypeError("description must be a string")
+        self._description = value
+
+    @property
+    def due_date(self):
+        return self._due_date
+    
+    @due_date.setter
+    def due_date(self, value):
+        if type(value) is not str:
+            raise TypeError("Due date must be a string")
+        self._due_date = value
 
     @classmethod
     def create_new_project(cls, title, description, due_date):
@@ -48,6 +98,36 @@ class Task:
         self.status = status
         self.assigned_to = assigned_to
         Task.all_tasks.append(self)
+
+    @property
+    def title(self):
+        return self._title
+    
+    @title.setter
+    def title(self, value):
+        if type(value) is not str:
+            raise TypeError("Title must be a string")
+        self._title = value
+
+    @property
+    def status(self):
+        return self._status
+    
+    @status.setter
+    def status(self, value):
+        if type(value) is not str:
+            raise TypeError("Status must be a string")
+        self._status = value
+
+    @property
+    def assigned_to(self):
+        return self._assigned_to
+    
+    @assigned_to.setter
+    def assigned_to(self, value):
+        if type(value) is not str:
+            raise TypeError("Assigned to must be a string")
+        self._assigned_to = value
 
     @classmethod
     def create_new_task(cls, title, status, assigned_to):
