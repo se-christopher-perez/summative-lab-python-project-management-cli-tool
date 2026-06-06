@@ -1,34 +1,76 @@
 import csv
+
+from rich import print
 from models import User, Project, Task
 
 if __name__ == "__main__":
 
-    dude = User.create_new_user("Dude", "dude@email.com")
+    def save_data():
 
-    cli = Project.create_new_project("cli", "Learn Python", "6/5/2026")
+        dude = User.create_new_user("Dude", "dude@email.com")
 
-    task = Task.create_new_task("Create cli", "Work In Progress", "6/20/2026")
+        cli = Project.create_new_project("cli", "Learn Python", "6/5/2026")
 
-    filename = "user_data.csv"
+        task = Task.create_new_task("Create cli", "Work In Progress", "6/20/2026")
 
-    try:
+        userData = "user_data.csv"
 
-        with open(f"data/{filename}", "w", newline="") as file:
-            writer = csv.writer(file)
+        try:
 
-            writer.writerow(["ID", "Name", "Email"])
-            for user in User.all_users:
-                writer.writerow([user.id, user.name, user.email])
+            with open(f"data/{userData}", "w", newline="") as file:
+                writer = csv.writer(file)
 
-            writer.writerow(["ID", "Title", "Description", "Due_date"])
-            for project in Project.all_projects:
-                writer.writerow([project.id, project.title, project.description, project.due_date])
+                writer.writerow(["ID", "Name", "Email"])
+                for user in User.all_users:
+                    writer.writerow([user.id, user.name, user.email])
 
-            writer.writerow(["ID", "Title", "Status", "Assigned_to"])
-            for task in Task.all_tasks:
-                writer.writerow([task.id, task.title, task.status, task.assigned_to])
+            print(f"[green]✅ {userData} Saved[/green]")
 
-        print(f"✅ {filename} Saved")
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
 
-    except FileNotFoundError:
-        print("❌ file not found")
+        projectData = "project_data.csv"
+
+        try:
+
+            with open(f"data/{projectData}", "w", newline="") as file:
+                writer = csv.writer(file)
+
+                writer.writerow(["ID", "Title", "Description", "Due_date"])
+                for project in Project.all_projects:
+                    writer.writerow([project.id, project.title, project.description, project.due_date])
+
+            print(f"[green]✅ {projectData} Saved[/green]")
+
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
+
+        taskData = "task_data.csv"
+
+        try:
+
+            with open(f"data/{taskData}", "w", newline="") as file:
+                writer = csv.writer(file)
+
+                writer.writerow(["ID", "Title", "Status", "Assigned_to"])
+                for task in Task.all_tasks:
+                    writer.writerow([task.id, task.title, task.status, task.assigned_to])
+
+            print(f"[green]✅ {taskData} Saved[/green]")
+
+        except FileNotFoundError:
+            print("[red]❌ file not found[/red]")
+
+    # def load_data():
+    #     try:
+
+    #         with open("data/user_data.csv", "r") as file:
+    #             reader = csv.reader(file)
+
+    #             for row in reader:
+    #                 id, name, email
+
+    #     except FileNotFoundError:
+    #         print("[red]❌ file not found[/red]")
+
+    save_data()

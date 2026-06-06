@@ -1,6 +1,2 @@
 ID,Name,Email
 1,Dude,dude@email.com
-ID,Title,Description,Due_date
-1,cli,Learn Python,6/5/2026
-ID,Title,Status,Assigned_to
-1,Create cli,Work In Progress,6/20/2026
