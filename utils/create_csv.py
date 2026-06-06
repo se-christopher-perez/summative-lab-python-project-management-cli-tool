@@ -55,10 +55,6 @@ def save_data():
 
 def load_data():
 
-    User.all_users.clear()
-    Project.all_projects.clear()
-    Task.all_tasks.clear()
-
     try:
             
         with open(f"data/user_data.csv", "r") as file:
