@@ -14,6 +14,9 @@ class User:
     @classmethod
     def all_users_list(cls):
         return cls.all_users
+    
+    def __str__(self):
+        return f"User: {self.name}\nEmail: {self.email}"
 
 class Project:
 
@@ -32,6 +35,9 @@ class Project:
     @classmethod
     def all_projects_list(cls):
         return cls.all_projects
+    
+    def __str__(self):
+        return f"Title: {self.title}\nDescription: {self.description}\nDue Date: {self.due_date}"
 
 class Task:
 
@@ -50,3 +56,6 @@ class Task:
     @classmethod
     def all_tasks_list(cls):
         return cls.all_tasks
+    
+    def __str__(self):
+        return f"Title: {self.title}\nStatus: {self.status}\nAssigned to: {self.assigned_to}"
