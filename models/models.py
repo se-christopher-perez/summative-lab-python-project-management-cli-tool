@@ -1,8 +1,11 @@
 class User:
 
     all_users = []
+    unique_id = 0
 
     def __init__(self, name, email):
+        User.unique_id += 1
+        self.id = User.unique_id
         self.name = name
         self.email = email
         User.all_users.append(self)
@@ -41,8 +44,11 @@ class User:
 class Project:
 
     all_projects = []
+    unique_id = 0
 
     def __init__(self, title, description, due_date):
+        Project.unique_id += 1
+        self.id = Project.unique_id
         self.title = title
         self.description = description
         self.due_date = due_date
@@ -92,8 +98,11 @@ class Project:
 class Task:
 
     all_tasks = []
+    unique_id = 0
 
     def __init__(self, title, status, assigned_to):
+        Task.unique_id += 1
+        self.id = Task.unique_id
         self.title = title
         self.status = status
         self.assigned_to = assigned_to
